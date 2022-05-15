@@ -34,7 +34,7 @@ fn rand_vec(dim: usize) -> Vec<u8> {
 
 mod employees {
 
-    use std::io;
+    use std::io::{self, Write};
     use std::collections::HashMap;
 
     pub fn interface() {
@@ -75,17 +75,18 @@ mod employees {
         println!("2) Show employees in a department");
         println!("3) Show all employees by department, sorted alphabetically");
         println!("Insert something else to quit.\n");
-        println!("Insert an option: ");
-
-        // io::stdout().flush().unwrap();
-        // print!("Insert an option: ");
+        // println!("Insert an option: ");
+        print!("Insert an option: ");
+        io::stdout().flush().unwrap();
     }
 
     fn record_employee(dep_emp: &mut HashMap<String, Vec<String>>) {
         println!("Insert employee info to record in the following format: “Add 'Employee' to 'Department'”");
         
-        // print!("Employee info: ");
-        println!("Employee info: ");
+        // println!("Employee info: ");
+        print!("Employee info: ");
+        io::stdout().flush().unwrap();
+
         let mut employee_new = String::new();
         io::stdin().read_line(&mut employee_new).expect("Error during employee info!");
 
@@ -106,8 +107,10 @@ mod employees {
     }
 
     fn show_deparment_employees(dep_emp: &HashMap<String, Vec<String>>) {
-        // print!("Insert a deparment name to show employees of it: ");
-        println!("Insert a deparment name to show employees of it: ");
+        // println!("Insert a deparment name to show employees of it: ");
+        print!("Insert a deparment name to show employees of it: ");
+        io::stdout().flush().unwrap();
+
         let mut department = String::new();
         io::stdin().read_line(&mut department).expect("Error reading deparment!");
         department.pop(); // Remove newline char
