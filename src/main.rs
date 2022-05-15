@@ -119,6 +119,11 @@ mod employees {
     }
 
     fn show_all_employees(dep_emp: &HashMap<String, Vec<String>>) {
+        if dep_emp.len() == 0 {
+            println!("No employees recorded yet.");
+            return;
+        }
+
         println!("Show all employees, by deparment, alphabetically sorted: \n");
         for (department, employees) in dep_emp {
             println!("Department: {}", department);
